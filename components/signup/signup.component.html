@@ -1,0 +1,36 @@
+
+<!-- https://tailwindui.com/components/application-ui/forms/sign-in-forms -->
+<div class="signup_container auth_container">
+    <img src="/assets/img/logo.svg" alt="">
+    <h1>Create new account</h1>
+    <form 
+        [formGroup]="formGroup" 
+        (ngSubmit)="submit()">
+
+        <label for="email">Pseudo</label>
+        <input 
+            type="text" 
+            id="username" 
+            formControlName="username" 
+            placeholder="Username" 
+            required>
+
+        <label for="email">Email address</label>
+        <input 
+            type="email" 
+            id="email" 
+            formControlName="email" 
+            placeholder="Email address" 
+            required>
+
+        <label for="password">Password</label>
+        <input 
+            type="password" 
+            id="password" 
+            formControlName="password" 
+            placeholder="Password" 
+            required>
+        
+        <input type="submit" value="Sign in" class="bg_central_button_gradient">
+    </form>
+</div>

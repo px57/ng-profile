@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { SwitchModalService } from 'src/modules/modal/services/switch-modal.service';
 import { HttpService } from 'src/modules/tools/services/http.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Form } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { ConfigSignin } from '../../types';
 
@@ -27,13 +27,25 @@ export class SigninComponent {
    */
   public config: ConfigSignin;
 
+  /**
+   * @description:
+   */
+  public httpResponse: any = {};
+
   constructor(
     public switchModalService: SwitchModalService,
     public httpService: HttpService,
     public authService: AuthService,
   ) {
     this.config = this.authService.config__signin;
-    this.formGroup = new FormGroup({
+    this.formGroup = this.getFormGroup();
+  }
+
+  /**
+   * @description: 
+   */
+  private getFormGroup(): FormGroup {
+    return new FormGroup({
       email: new FormControl(''),
       password: new FormControl(''),
     });
@@ -56,7 +68,7 @@ export class SigninComponent {
       password: this.formGroup.value.password,
     };
     this.httpService.post('auth/signin', params).subscribe((response: any) => {
-      console.log(response)
+      this.httpResponse = response;
       if (!response.success) {
         return;
       }

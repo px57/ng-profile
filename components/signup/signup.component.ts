@@ -4,7 +4,7 @@ import { HttpService } from 'src/modules/tools/services/http.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { ConfigSignup } from '../../types';
-import { FormsService } from 'src/app/services/forms.service';
+import { FormsService } from 'src/modules/form/services/forms.service';
 
 @Component({
   selector: 'app-signup',
@@ -21,6 +21,11 @@ export class SignupComponent {
    * @description: 
    */
   public config: ConfigSignup;
+
+  /**
+   * @description: 
+   */
+  public httpResponse: any = {};
 
   constructor(
     public switchModalService: SwitchModalService,
@@ -61,7 +66,7 @@ export class SignupComponent {
     };
 
     this.httpService.post('auth/signup', params).subscribe((response: any) => {
-      console.log(response);
+      this.httpResponse = response;
       if (!response.success) {
         return; 
       }

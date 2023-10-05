@@ -5,7 +5,11 @@ import {
   ConfigSignin, 
   ConfigSignup, 
   ConfigForgetPassword 
-} from '../types'; 
+} from '../types';
+import { FormsService } from 'src/modules/form/services/forms.service';
+
+
+var $localize = function(data: any) { return data };
 
 
 @Injectable({
@@ -74,6 +78,41 @@ export class AuthService {
    */
   constructor(
     private router: Router,
-  ) { }
+    private formsService: FormsService,
+  ) {
+    this.defineConvertFormError();
+  }
 
+  /**
+   * @description: Set the error message for the form.
+   */
+  private defineConvertFormError(): void {
+    this.formsService.setConvertFormError({
+      email: {
+        exists: $localize`This email address is already in use.`,
+        invalid: $localize`The email address is invalid.`,
+        required: $localize`This field is required.`,
+        not_encountered: $localize`This email address is not registered.`,
+        'Enter a valid email address.': $localize`The email address is invalid.`,
+      },
+      password: {
+        password_is_alpha: $localize`Password must contain at least one number.`,
+        password_is_numeric: $localize`Password must contain at least one letter.`,
+        password_too_long: $localize`Password must contain at most 128 characters.`,
+        password_too_short: $localize`Password must contain at least 8 characters.`,
+        password_is_lower: $localize`Password must contain at least one uppercase letter.`,
+        password_has_space: $localize`Password must not contain spaces.`,
+        required: $localize`This field is required.`,
+      },
+      first_name: {
+        required: $localize`This field is required.`,
+      },
+      last_name: {
+        required: $localize`This field is required.`,
+      },
+      __signin__: {
+        not_exists: $localize`Please fill in your email and password to sign in`,
+      },
+    })
+  }
 }

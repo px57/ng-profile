@@ -6,7 +6,11 @@
     <form 
         [formGroup]="formGroup" 
         (ngSubmit)="submit()">
-        <label for="email">Email address</label>
+
+        <label for="email">
+            Email address
+        </label>
+
         <input 
             type="email" 
             id="email" 
@@ -16,14 +20,24 @@
 
         <a 
             (click)="switchModalService.open_modal('forget_password')"
-            class="forget_password">Forgot password?</a>
+            class="forget_password">
+            Forgot password?
+        </a>
+
         <label for="password">Password</label>
+
         <input 
             type="password" 
             id="password" 
             formControlName="password" 
             placeholder="Password" 
             required>
+        
+        <app-form-error
+            [httpResponse]="httpResponse"
+            inputName="__signin__"
+          ></app-form-error>
+
         <input type="submit" value="Sign in" class="bg_central_button_gradient">
         
         <span>

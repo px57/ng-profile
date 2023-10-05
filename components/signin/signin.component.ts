@@ -1,7 +1,15 @@
-import { Component } from '@angular/core';
+import { 
+    Component, 
+    Input, 
+    Output, 
+    EventEmitter,
+    Inject,
+} from '@angular/core';
 import { SwitchModalService } from 'src/modules/modal/services/switch-modal.service';
 import { HttpService } from 'src/modules/tools/services/http.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { ConfigSignin } from '../../types';
 
 @Component({
   selector: 'app-signin',
@@ -14,15 +22,27 @@ export class SigninComponent {
    */
   public formGroup: FormGroup;
 
+  /**
+   * @description:
+   */
+  public config: ConfigSignin;
+
   constructor(
     public switchModalService: SwitchModalService,
     public httpService: HttpService,
+    public authService: AuthService,
   ) {
+    this.config = this.authService.config__signin;
     this.formGroup = new FormGroup({
       email: new FormControl(''),
       password: new FormControl(''),
     });
   }
+
+  /**
+   * @description:
+   */
+  public ngOnInit() {  }
 
   /**
    * @description:
@@ -36,10 +56,12 @@ export class SigninComponent {
       password: this.formGroup.value.password,
     };
     this.httpService.post('auth/signin', params).subscribe((response: any) => {
+      console.log(response)
       if (!response.success) {
         return;
       }
-      return window.location.reload();
+
+      this.config.eventAfterSignin();
     });
   }
 }

@@ -3,7 +3,6 @@
 <div class="signin_container auth_container">
     <img src="/assets/img/logo.svg" alt="">
     <h1>Sign in to your account</h1>
-    <form-input></form-input>
     <form 
         [formGroup]="formGroup" 
         (ngSubmit)="submit()">
@@ -25,7 +24,6 @@
             formControlName="password" 
             placeholder="Password" 
             required>
-        
         <input type="submit" value="Sign in" class="bg_central_button_gradient">
         
         <span>

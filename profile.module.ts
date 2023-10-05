@@ -15,6 +15,7 @@ import { UpdateProfileComponent } from './components/update-profile/update-profi
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { ModalModule } from 'src/modules/modal/modal.module';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ModalModule } from 'src/modules/modal/modal.module';
   ],
   providers: [
     UserService,
+    AuthService,
   ],
   exports: [
     AvatarUpdateComponent,

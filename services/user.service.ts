@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpService } from 'src/modules/tools/services/http.service';
 import { LibsService } from 'src/modules/tools/services/libs.service';
-import { ModalController } from 'src/modules/modal/services/modal.service';
 import { SwitchModalService } from 'src/modules/modal/services/switch-modal.service';
 
 export interface Avatar {
@@ -44,7 +43,6 @@ export class UserService {
     private router: Router,
     public _h: HttpService,
     public l: LibsService,
-    public modalController: ModalController,
     public switchModalService: SwitchModalService,
   )
   {

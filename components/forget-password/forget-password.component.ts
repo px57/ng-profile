@@ -5,14 +5,21 @@ import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-forget-password',
-  templateUrl: './forget-password.component.html',
-  styleUrls: ['./forget-password.component.scss']
+  templateUrl: './../../../../templates/profile/auth/forget-password/forget-password.component.html',
+  styleUrls: [
+    './../../../../templates/profile/auth/forget-password/forget-password.component.scss',
+  ]
 })
 export class ForgetPasswordComponent {
   /**
    * @description: 
    */
   public formGroup: FormGroup;
+
+  /**
+   * @descsription: 
+   */
+  public httpResponse: any = {};
 
   constructor(
     public switchModalService: SwitchModalService,

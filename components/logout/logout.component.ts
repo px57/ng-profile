@@ -3,8 +3,10 @@ import { UserService } from 'src/modules/profile/services/user.service';
 
 @Component({
   selector: 'app-logout',
-  templateUrl: './logout.component.html',
-  styleUrls: ['./logout.component.scss']
+  templateUrl: './../../../../templates/profile/auth/logout/logout.component.html',
+  styleUrls: [
+    './../../../../templates/profile/auth/logout/logout.component.scss',
+  ]
 })
 export class LogoutComponent {
   /**

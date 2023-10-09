@@ -13,8 +13,10 @@ import { ConfigSignin } from '../../types';
 
 @Component({
   selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.scss']
+  templateUrl: './../../../../templates/profile/auth/signin/signin.component.html',
+  styleUrls: [
+    './../../../../templates/profile/auth/signin/signin.component.scss',
+  ]
 })
 export class SigninComponent {
   /**

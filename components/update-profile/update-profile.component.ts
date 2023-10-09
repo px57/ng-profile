@@ -4,8 +4,10 @@ import { HttpService } from 'src/modules/tools/services/http.service';
 
 @Component({
   selector: 'app-update-profile',
-  templateUrl: './update-profile.component.html',
-  styleUrls: ['./update-profile.component.scss']
+  templateUrl: './../../../../templates/profile/management/update-profile/update-profile.component.html',
+  styleUrls: [
+    './../../../../templates/profile/management/update-profile/update-profile.component.scss',
+  ]
 })
 export class UpdateProfileComponent {
 

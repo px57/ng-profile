@@ -7,8 +7,10 @@ import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-avatar-update',
-  templateUrl: './avatar-update.component.html',
-  styleUrls: ['./avatar-update.component.scss']
+  templateUrl: './../../../../templates/profile/management/avatar-update/avatar-update.component.html',
+  styleUrls: [
+    './../../../../templates/profile/management/avatar-update/avatar-update.component.scss',
+  ]
 })
 export class AvatarUpdateComponent {
   /**

@@ -4,8 +4,10 @@ import { HttpService } from 'src/modules/tools/services/http.service';
 
 @Component({
   selector: 'app-update-password',
-  templateUrl: './update-password.component.html',
-  styleUrls: ['./update-password.component.scss']
+  templateUrl: './../../../../templates/profile/management/update-password/update-password.component.html',
+  styleUrls: [
+    './../../../../templates/profile/management/update-password/update-password.component.scss',
+  ]
 })
 export class UpdatePasswordComponent {
 

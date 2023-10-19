@@ -33,6 +33,7 @@ export class GlobalResolver implements Resolve<offers>{
           
           if (!this.user.data_loaded()) {
             this.user.update_data().subscribe((response: any) => {
+              console.log(response)
               this.callback.bind(this);
               this.httpService.get('v1/auth/me').subscribe((response: any) => {
                 this.user.set_data(response);

@@ -671,7 +671,8 @@ export class UserService {
     };
   
     if (profile === undefined) {
-      profile = this.data.profile;
+      profile = this?.data?.profile;
+
     } 
 
     if (profile === undefined) {

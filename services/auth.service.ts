@@ -9,9 +9,6 @@ import {
 import { FormsService } from 'src/modules/form/services/forms.service';
 
 
-var $localize = function(data: any) { return data };
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -48,7 +45,7 @@ export class AuthService {
       {
         name: 'username',
         required: true,
-        placeholder: `My Username`,
+        placeholder: $localize `My Username`,
       },
       {
         name: 'email',
@@ -68,7 +65,7 @@ export class AuthService {
    */
   public config__forget_password: ConfigForgetPassword = {
     redirectToPathname: ['/', 'dashboard'],
-    eventAfterForgetPassword: () => {
+    eventAfterForgetPassword: (component: any) => {
       this.router.navigate([this.config__forget_password.redirectToPathname]);
     },
   };
@@ -89,6 +86,7 @@ export class AuthService {
   private defineConvertFormError(): void {
     this.formsService.setConvertFormError({
       email: {
+        email_exists: $localize`This email address is already in use.`,
         exists: $localize`This email address is already in use.`,
         invalid: $localize`The email address is invalid.`,
         required: $localize`This field is required.`,
@@ -112,6 +110,7 @@ export class AuthService {
       },
       __signin__: {
         not_exists: $localize`Please fill in your email and password to sign in`,
+        profile_dont_exists: $localize`Please go to the admin panel to create your profile`,
       },
     })
   }

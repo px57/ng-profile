@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { SwitchModalService } from 'src/modules/modal/services/switch-modal.service';
 import { HttpService } from 'src/modules/tools/services/http.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-forget-password',
@@ -24,9 +25,10 @@ export class ForgetPasswordComponent {
   constructor(
     public switchModalService: SwitchModalService,
     public httpService: HttpService,
+    public authService: AuthService,
   ) {
     this.formGroup = new FormGroup({
-      email: new FormControl(''),
+      email: new FormControl('projeta618@gmail.com'),
       password: new FormControl(''),
     });
   }
@@ -42,7 +44,12 @@ export class ForgetPasswordComponent {
       email: this.formGroup.value.email,
       password: this.formGroup.value.password,
     };
-    this.httpService.post('auth/signin', params).subscribe((response: any) => {
+    this.httpService.post('auth/forget-password', params).subscribe((response: any) => {
+      this.httpResponse = response;
+      if (!response.success) {
+        return; 
+      }
+      this.authService.config__forget_password.eventAfterForgetPassword(this); 
     });
   }
 }

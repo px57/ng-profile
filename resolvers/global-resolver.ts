@@ -33,18 +33,9 @@ export class GlobalResolver implements Resolve<offers>{
           
           if (!this.user.data_loaded()) {
             this.user.update_data().subscribe((response: any) => {
-              console.log(response)
               this.callback.bind(this);
-              this.httpService.get('v1/auth/me').subscribe((response: any) => {
-                this.user.set_data(response);
-                this.callback();
-
-                if (response.data.onboarding !== true) { 
-                  this.router.navigate(['/', 'auth', 'onboarding', 'start']);
-                }
-                resolve({success: true});
-               });
-
+              resolve({success: true});
+              return;
             });
           } else {
             this.callback();

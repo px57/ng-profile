@@ -20,6 +20,8 @@ export interface Profile {
   username: string,
   first_name: string,
   last_name: string,
+  isbotnet?: boolean,
+  birthdate?: string,
 };
 
 interface TP_userData {

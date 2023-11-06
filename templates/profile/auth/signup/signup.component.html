@@ -1,57 +1,52 @@
-
 <!-- https://tailwindui.com/components/application-ui/forms/sign-in-forms -->
 <div class="signup_container auth_container">
-    <img src="/assets/img/logo.svg" alt="">
-    <h1>Create new account</h1>
-    <form 
-        [formGroup]="formGroup" 
-        (ngSubmit)="submit()">
+  <img src="/assets/img/logo.svg" alt="" />
+  <h1>Create new account</h1>
+  <form [formGroup]="formGroup" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label for="email">Pseudo</label>
+      <input
+        type="text"
+        id="username"
+        formControlName="username"
+        placeholder="Username"
+        required
+      />
 
+      <app-form-error
+        [httpResponse]="httpResponse"
+        inputName="username"
+      ></app-form-error>
+    </div>
 
-        <div class="form-group">
-            <label for="email">Pseudo</label>
-            <input 
-                type="text" 
-                id="username" 
-                formControlName="username" 
-                placeholder="Username" 
-                required>
-    
-            <app-form-error
-                [httpResponse]="httpResponse"
-                inputName="username"></app-form-error>
-        </div>
+    <div class="form-group">
+      <label for="email">Email address</label>
 
-        <div class="form-group">
-            <label for="email">Email address</label>
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        placeholder="Email address"
+        required
+      />
 
-            <input 
-                type="email" 
-                id="email" 
-                formControlName="email" 
-                placeholder="Email address" 
-                required>
-    
-            <app-form-error
-                [httpResponse]="httpResponse"
-                inputName="email">
-            </app-form-error>
-        </div>
+      <app-form-error [httpResponse]="httpResponse" inputName="email">
+      </app-form-error>
+    </div>
 
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input 
-                type="password" 
-                id="password" 
-                formControlName="password" 
-                placeholder="Password" 
-                required>
-            <app-form-error
-                [httpResponse]="httpResponse"
-                inputName="password">
-            </app-form-error>
-        </div>
-        
-        <input type="submit" value="Sign in" class="bg_central_button_gradient">
-    </form>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        placeholder="Password"
+        required
+      />
+      <app-form-error [httpResponse]="httpResponse" inputName="password">
+      </app-form-error>
+    </div>
+
+    <input type="submit" value="Sign in" class="bg_central_button_gradient" />
+  </form>
 </div>

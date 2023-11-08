@@ -1,81 +1,80 @@
-import { 
-    Component, 
-    Input, 
-    Output, 
-    EventEmitter,
-    Inject,
-} from '@angular/core';
-import { SwitchModalService } from 'src/modules/modal/services/switch-modal.service';
-import { HttpService } from 'src/modules/tools/services/http.service';
-import { FormGroup, FormControl, Form } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
-import { ConfigSignin } from '../../types';
+import { Component, Input, Output, EventEmitter, Inject } from '@angular/core'
+import { SwitchModalService } from 'src/modules/modal/services/switch-modal.service'
+import { HttpService } from 'src/modules/tools/services/http.service'
+import { FormGroup, FormControl, Form } from '@angular/forms'
+import { AuthService } from '../../services/auth.service'
+import { FormsService } from 'src/modules/form/services/forms.service'
+import { ConfigSignin } from '../../types'
 
 @Component({
   selector: 'app-signin',
-  templateUrl: './../../../../templates/profile/auth/signin/signin.component.html',
+  templateUrl:
+    './../../../../templates/profile/auth/signin/signin.component.html',
   styleUrls: [
-    './../../../../templates/profile/auth/signin/signin.component.scss',
+    './../../../../templates/profile/auth/signin/signin.component.scss'
   ]
 })
 export class SigninComponent {
   /**
-   * @description: 
+   * @description:
    */
-  public formGroup: FormGroup;
+  public formGroup: FormGroup
 
   /**
    * @description:
    */
-  public config: ConfigSignin;
+  public config: ConfigSignin
 
   /**
    * @description:
    */
-  public httpResponse: any = {};
+  public httpResponse: any = {}
 
   constructor(
     public switchModalService: SwitchModalService,
     public httpService: HttpService,
     public authService: AuthService,
+    public formService: FormsService
   ) {
-    this.config = this.authService.config__signin;
-    this.formGroup = this.getFormGroup();
-  }
-
-  /**
-   * @description: 
-   */
-  private getFormGroup(): FormGroup {
-    return new FormGroup({
-      email: new FormControl(''),
-      password: new FormControl(''),
-    });
+    this.config = this.authService.config__signin
+    this.formGroup = this.getFormGroup()
   }
 
   /**
    * @description:
    */
-  public ngOnInit() {  }
+  private getFormGroup(): FormGroup {
+    return new FormGroup({
+      email: new FormControl(''),
+      password: new FormControl('')
+    })
+  }
+
+  /**
+   * @description:
+   */
+  public ngOnInit() {}
 
   /**
    * @description:
    */
   public submit(): void {
-    if (this.formGroup.invalid) { return; }
-    
+    if (this.formGroup.invalid) {
+      return
+    }
+
     // -> [API] - Signin
     const params = {
       identifier: this.formGroup.value.email,
-      password: this.formGroup.value.password,
-    };
+      password: this.formGroup.value.password
+    }
     this.httpService.post('auth/signin', params).subscribe((response: any) => {
-      this.httpResponse = response;
+      this.httpResponse = response
       if (!response.success) {
-        return;
+        return
       }
 
-      this.config.eventAfterSignin();
-    });
+      this.config.eventAfterSignin()
+    })
   }
 }

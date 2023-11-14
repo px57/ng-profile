@@ -17,6 +17,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { ModalModule } from 'src/modules/modal/modal.module';
 import { AuthService } from './services/auth.service';
 import { FrgpasswordChangePasswordComponent } from './components/frgpassword-change-password/frgpassword-change-password.component';
+import { AvatarComponent } from './components/avatar/avatar.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { FrgpasswordChangePasswordComponent } from './components/frgpassword-cha
     SigninComponent,
     SignupComponent,
     FrgpasswordChangePasswordComponent,
+    AvatarComponent,
   ],
   imports: [
     CommonModule,

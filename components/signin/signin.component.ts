@@ -73,7 +73,6 @@ export class SigninComponent {
       if (!response.success) {
         return
       }
-
       this.config.eventAfterSignin()
     })
   }

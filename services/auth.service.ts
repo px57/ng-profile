@@ -7,6 +7,9 @@ import {
   ConfigForgetPassword 
 } from '../types';
 import { FormsService } from 'src/modules/form/services/forms.service';
+// import { HttpClient } from '@angular/common/http';
+import { HttpService } from 'src/modules/tools/services/http.service';
+
 
 
 @Injectable({
@@ -28,13 +31,27 @@ export class AuthService {
     },
   };
 
+
+  signIn(email: string, password: string): void {
+    const params = { identifier: email, password: password };
+    this.http.post('auth/signin', params).subscribe((response: any) => {
+      if (response.success) {
+        // Perform actions after successful sign-in
+        this.config__signin.eventAfterSignin();
+      } else {
+        // Handle the error case
+        console.error('Sign-in failed', response);
+      }
+    });
+  }
+
   /**
    * @description: 
    */
   public config__signup: ConfigSignup = {
     redirectToPathname: '/',
     eventAfterSignup: () => {
-      const redirectToPathname = this.config__signin.redirectToPathname;
+      const redirectToPathname = this.config__signup.redirectToPathname;
       if (typeof redirectToPathname === 'string') { 
         window.location.href = redirectToPathname;
       } else {
@@ -76,9 +93,11 @@ export class AuthService {
   constructor(
     private router: Router,
     private formsService: FormsService,
+    private http: HttpService, // Inject HttpClient
   ) {
     this.defineConvertFormError();
   }
+
 
   /**
    * @description: Set the error message for the form.

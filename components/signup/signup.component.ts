@@ -72,7 +72,9 @@ export class SignupComponent {
       if (!response.success) {
         return; 
       }
-      this.config.eventAfterSignup(response);
+      this.authService.signIn(params.email, params.password);
+
+      // this.config.eventAfterSignup(response);
     });
   }
 }

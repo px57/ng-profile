@@ -1,9 +1,9 @@
 <!-- https://tailwindui.com/components/application-ui/forms/sign-in-forms -->
 <div class="signin_container auth_container">
   <img src="/assets/img/logo.svg" alt="" />
-  <h1>Sign in to your account</h1>
+  <h1>Se connecter</h1>
   <form [formGroup]="formGroup" (ngSubmit)="submit()">
-    <label for="email"> Email address </label>
+    <label for="email"> Adresse Email </label>
 
     <input
       type="email"
@@ -17,10 +17,10 @@
       (click)="switchModalService.open_modal('forget_password')"
       class="forget_password"
     >
-      Forgot password?
+      Mot de passe oublié?
     </a>
 
-    <label for="password">Password</label>
+    <label for="password">Mot de passe</label>
 
     <input
       type="password"

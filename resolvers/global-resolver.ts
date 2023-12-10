@@ -1,8 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { Resolve,
-         ActivatedRoute,
-         Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { HttpService } from 'src/modules/tools/services/http.service';
 import { UserService } from 'src/modules/profile/services/user.service';
@@ -12,7 +10,7 @@ interface offers {
 };
 
 @Injectable()
-export class GlobalResolver implements Resolve<offers>{
+export class GlobalResolver {
   public route: any;
   public state: any;
 

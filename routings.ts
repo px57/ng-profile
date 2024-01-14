@@ -21,5 +21,5 @@ export const profile__routes: Routes = [
     {
         'path': 'auth/frgpassword-change-password/:token',
         'component': FrgpasswordChangePasswordComponent,
-    },
+    }
   ];

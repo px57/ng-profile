@@ -688,4 +688,14 @@ export class UserService {
   public update_avatar(avatar: any) {
     this.data.profile.avatar = avatar
   }
+
+
+
+  public redirectToQuizIfNotOnboarded(): void {
+    if (!this.profileHasOnboarded()) {
+      //delete comment to activate quiz when it starts
+      //this.router.navigateByUrl('/profile-setting');
+      this.router.navigateByUrl('/');
+    }
+  }
 }

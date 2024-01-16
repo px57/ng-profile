@@ -7,6 +7,8 @@ import { map } from 'rxjs/operators'
 import { HttpService } from 'src/modules/tools/services/http.service'
 import { LibsService } from 'src/modules/tools/services/libs.service'
 import { SwitchModalService } from 'src/modules/modal/services/switch-modal.service'
+import { HttpHeaders } from '@angular/common/http';
+
 
 export interface Avatar {
   src: string
@@ -36,6 +38,7 @@ export class UserService {
   public stream: Subject<any> = new Subject()
 
   public REDIRECT_ONBOARDING = true
+  httpService: any
 
   /*
    * @description:
@@ -66,6 +69,8 @@ export class UserService {
       window.location.reload()
     })
   }
+
+
 
   /*
    * @description:
@@ -196,13 +201,12 @@ export class UserService {
   /*
    * @description:
    */
-  public get_id(): number {
-    let data = this.get_data()
-
-    if (!data.hasOwnProperty('user') || !data.user.hasOwnProperty('id')) {
-      return 0
+  public get_profile_id(): number | null {
+    if (this.data && this.data.profile && this.data.profile.id) {
+      return this.data.profile.id; // Acessa o id do perfil
+    } else {
+      return null;
     }
-    return data.user.id
   }
 
   /*
@@ -306,6 +310,8 @@ export class UserService {
       })
     )
   }
+
+
 
   /*
    * @description:
@@ -691,11 +697,11 @@ export class UserService {
 
 
 
-  public redirectToQuizIfNotOnboarded(): void {
-    if (!this.profileHasOnboarded()) {
-      //delete comment to activate quiz when it starts
-      //this.router.navigateByUrl('/profile-setting');
-      this.router.navigateByUrl('/');
-    }
+
+
+
+  public post(event: string, params: any, options?: any): any {
+    return this._h.post2(`auth/${event}`, params, options);
   }
+
 }

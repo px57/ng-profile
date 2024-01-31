@@ -81,7 +81,7 @@ export class AuthService {
    * @description: 
    */
   public config__forget_password: ConfigForgetPassword = {
-    redirectToPathname: ['/', 'dashboard'],
+    redirectToPathname: ['auth', 'signin'],
     eventAfterForgetPassword: (component: any) => {
       this.router.navigate([this.config__forget_password.redirectToPathname]);
     },

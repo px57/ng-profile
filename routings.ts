@@ -4,6 +4,7 @@ import { SigninComponent } from 'src/modules/profile/components/signin/signin.co
 import { SignupComponent } from 'src/modules/profile/components/signup/signup.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { FrgpasswordChangePasswordComponent } from './components/frgpassword-change-password/frgpassword-change-password.component';
+import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 
 export const profile__routes: Routes = [
     {
@@ -20,6 +21,8 @@ export const profile__routes: Routes = [
     },
     {
         'path': 'auth/frgpassword-change-password/:token',
-        'component': FrgpasswordChangePasswordComponent,
-    }
+        'component': UpdatePasswordComponent,
+    },
+        
+
   ];

@@ -18,6 +18,7 @@ import { ModalModule } from 'src/modules/modal/modal.module';
 import { AuthService } from './services/auth.service';
 import { FrgpasswordChangePasswordComponent } from './components/frgpassword-change-password/frgpassword-change-password.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AvatarComponent } from './components/avatar/avatar.component';
     ReactiveFormsModule,
     FormModule,
     ModalModule,
+    MatSnackBarModule 
   ],
   providers: [
     UserService,

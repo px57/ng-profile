@@ -65,6 +65,8 @@ export class UpdatePasswordComponent implements OnInit {
       password: this.formGroup.value.password,
       confirmPassword: this.formGroup.value.confirmPassword
     };
+    console.log(updatePasswordData);
+    
   
     this.httpService.post2('auth/verify_token', updatePasswordData).subscribe(
       (response: any) => {

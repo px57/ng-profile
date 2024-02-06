@@ -32,7 +32,7 @@ export class ForgetPasswordComponent {
   ) {
     //this.snackBar.open('Teste SnackBar', 'Fechar', { duration: 3000000000000000000000000000 });
     this.formGroup = new FormGroup({
-      email: new FormControl('projeta618@gmail.com'),
+      email: new FormControl(''),
       password: new FormControl(''),
     });
   }

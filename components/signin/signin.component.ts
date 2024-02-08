@@ -77,27 +77,8 @@ export class SigninComponent {
       if (!response.success) {
         return
       }
-
-      const userId = this.userService.get_profile_id(); // Certifique-se de que isto retorna o ID do usuário correto
-      const headers = new HttpHeaders({'Content-Type': 'application/json'});
+      
   
-      // Criar um objeto com 'user_id'
-      const body = JSON.stringify({ user_id: userId });
-  
-      this.userService.post('settingsverify', body, { headers }).subscribe({
-          next: (response: any) => {
-            if (response.exists) {
-              // Se o registro existe, redirecionar para '/'
-              this.router.navigate(['/']);
-          } else {
-              // Se não existe, redirecionar para '/profile-setting'
-              this.router.navigate(['/profile-setting']);
-          }
-          },
-          error: (error: any) => {
-              console.error(error);
-          }
-      });
       this.config.eventAfterSignin()
     })
   }

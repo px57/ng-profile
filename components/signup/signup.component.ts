@@ -5,7 +5,9 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { ConfigSignup } from '../../types';
 import { FormsService } from 'src/modules/form/services/forms.service';
-
+import { Router } from '@angular/router'
+import { HttpHeaders } from '@angular/common/http';
+import { UserService } from 'src/modules/profile/services/user.service'
 @Component({
   selector: 'app-signup',
   templateUrl: './../../../../templates/profile/auth/signup/signup.component.html',
@@ -34,6 +36,8 @@ export class SignupComponent {
     public httpService: HttpService,
     public authService: AuthService,
     public formService: FormsService,
+    public userService: UserService,
+    public router: Router
   ) {
     this.config = this.authService.config__signup;
     this.formGroup = this.generateFormGroup();
@@ -72,6 +76,7 @@ export class SignupComponent {
       if (!response.success) {
         return; 
       }
+
       this.authService.signIn(params.email, params.password);
 
       // this.config.eventAfterSignup(response);

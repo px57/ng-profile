@@ -20,7 +20,7 @@ export class AuthService {
    * @description: 
    */
   public config__signin: ConfigSignin = {
-    redirectToPathname: '/',
+    redirectToPathname: '/profile-setting',
     eventAfterSignin: () => {
       const redirectToPathname = this.config__signin.redirectToPathname;
       if (typeof redirectToPathname === 'string') { 
@@ -36,7 +36,7 @@ export class AuthService {
     const params = { identifier: email, password: password };
     this.http.post('auth/signin', params).subscribe((response: any) => {
       if (response.success) {
-        // Perform actions after successful sign-in
+
         this.config__signin.eventAfterSignin();
       } else {
         // Handle the error case

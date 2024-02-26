@@ -20,7 +20,7 @@ export class AuthService {
    * @description: 
    */
   public config__signin: ConfigSignin = {
-    redirectToPathname: '/profile-setting',
+    redirectToPathname: '/',
     eventAfterSignin: () => {
       const redirectToPathname = this.config__signin.redirectToPathname;
       if (typeof redirectToPathname === 'string') { 
@@ -49,7 +49,7 @@ export class AuthService {
    * @description: 
    */
   public config__signup: ConfigSignup = {
-    redirectToPathname: '/',
+    redirectToPathname: '/profile-setting',
     eventAfterSignup: () => {
       const redirectToPathname = this.config__signup.redirectToPathname;
       if (typeof redirectToPathname === 'string') { 

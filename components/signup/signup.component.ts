@@ -79,7 +79,7 @@ export class SignupComponent {
 
       this.authService.signIn(params.email, params.password);
 
-      // this.config.eventAfterSignup(response);
+       this.config.eventAfterSignup(response);
     });
   }
 }
